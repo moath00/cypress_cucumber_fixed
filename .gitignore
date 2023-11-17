@@ -1,0 +1,12 @@
+**/node_modules
+**/mochareports
+**/.npmrc
+**/cypress/screenshots
+**/cypress/reports
+**/cypress/videos
+**/automocks
+**/.DS_Store
+**/cypress/downloads
+**/debug.log
+**/cypress/logs
+**/.vscode

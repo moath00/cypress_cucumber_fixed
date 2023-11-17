@@ -1,0 +1,9 @@
+{
+    "name": "AAA - Test Vacancy - MMMH",
+    "jobTitleId": 0,
+    "employeeId": 0,
+    "numOfPositions": 1,
+    "description": "Manual test to get api payload.",
+    "status": true,
+    "isPublished": true
+}
