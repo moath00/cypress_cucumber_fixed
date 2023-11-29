@@ -9,6 +9,7 @@ import { DeleteEmployeeResponse } from "../../APIs/Admin/response/deleteEmployee
 import { DeleteJobTitleResponse } from "../../APIs/Admin/response/deleteJobTitleResponse";
 import { DeletedLocationResponse } from "../../APIs/Admin/response/deletedLocationResponse";
 
+// Admin actions
 declare global {
   namespace Cypress {
     interface Chainable {
