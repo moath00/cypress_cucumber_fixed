@@ -52,7 +52,26 @@ export default class Recruitment {
     },
   };
 
-  open(): void {
+  clickOnShortListBtn(): void {
+    this.elements.applicationStage.shortListBtn().click();
+  }
+  clickOnMarkInterviewPassBtn(): void {
+    this.elements.applicationStage.markInterviewPassBtn().click();
+  }
+  clickOnSaveBtn(): void {
+    this.elements.applicationStage.saveDataBtn().click();
+  }
+  clickOnMarkInterviewFailBtn(): void {
+    this.elements.applicationStage.markInterviewFailBtn().click();
+  }
+  clickOnEditBtn(): void {
+    this.elements.candidateProfile.editScrollBtn().click({ force: true });
+  }
+  attachResumeFile(path: string): void {
+    this.elements.candidateProfile.resumeFileBtn().attachFile(path);
+  }
+
+  openRecruitmentPage(): void {
     sidebar.itemPageNumber(5);
   }
 
@@ -75,7 +94,6 @@ export default class Recruitment {
     this.elements.addCandidatePage
       .dropDownVacancyField()
       .click({ force: true });
-    // this.elements.addCandidatePage.dropDownList().scrollTo(0, 400);
     this.elements.addCandidatePage.dropDownItems().eq(0).scrollIntoView();
     this.elements.addCandidatePage.dropDownItems().eq(0).click();
     this.elements.addCandidatePage.emailInput().type(data.email);
@@ -93,8 +111,8 @@ export default class Recruitment {
   }
 
   shortListInitiatedCandidate(): void {
-    this.elements.applicationStage.shortListBtn().click();
-    this.elements.applicationStage.saveDataBtn().click();
+    this.clickOnShortListBtn();
+    this.clickOnSaveBtn();
   }
 
   scheduleInterviewForCandidate(): void {
@@ -120,22 +138,22 @@ export default class Recruitment {
   }
 
   markInterviewPass(): void {
-    this.elements.applicationStage.markInterviewPassBtn().click();
-    this.elements.applicationStage.saveDataBtn().click();
+    this.clickOnMarkInterviewPassBtn();
+    this.clickOnSaveBtn();
   }
 
   markInterviewFailed(): void {
-    this.elements.applicationStage.markInterviewFailBtn().click();
-    this.elements.applicationStage.saveDataBtn().click();
+    this.clickOnMarkInterviewFailBtn();
+    this.clickOnSaveBtn();
   }
 
   enableEditCandidate(): void {
-    this.elements.candidateProfile.editScrollBtn().click({ force: true });
+    this.clickOnEditBtn();
   }
 
   editCandidateProfileToAttachFile(filePath: string): void {
-    this.elements.candidateProfile.resumeFileBtn().attachFile(filePath);
-    this.elements.applicationStage.saveDataBtn().click();
+    this.attachResumeFile(filePath);
+    this.clickOnSaveBtn();
   }
 
   downloadAttachedFile(): void {

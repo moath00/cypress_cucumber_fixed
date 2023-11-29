@@ -29,7 +29,7 @@ let jobTitleId: number;
 let addedCandidatePageUrl: string;
 
 // part 1 + 2: test case 1
-Given("The system have employee And job title And vacancy", () => {
+beforeEach("The system have employee And job title And vacancy", () => {
   cy.fixture("employee").as("employee");
   cy.fixture("jobTitle").as("jobTitle");
   cy.fixture("vacancy").as("vacancy");
@@ -59,13 +59,12 @@ Given("The system have employee And job title And vacancy", () => {
     RecruitmentPage.addCandidateViaUI(candidate).then((url) => {
       addedCandidatePageUrl = url;
     });
-    RecruitmentPage.shortListInitiatedCandidate();
-    RecruitmentPage.scheduleInterviewForCandidate();
   });
 });
 
 Given('The system have candidate with status "Interview Scheduled"', () => {
-  RecruitmentPage.assertTheCurrentStatus(CANDIDATE_STATUS.SCHEDULED);
+  RecruitmentPage.shortListInitiatedCandidate();
+  RecruitmentPage.scheduleInterviewForCandidate();
 });
 
 When("The Admin log in", () => {
@@ -73,7 +72,7 @@ When("The Admin log in", () => {
 });
 
 When("Access the candidate form and Enable the edit candidate switch", () => {
-  RecruitmentPage.open();
+  RecruitmentPage.openRecruitmentPage();
   RecruitmentPage.openAddedCandidatePage(addedCandidatePageUrl);
   RecruitmentPage.enableEditCandidate();
 });
@@ -102,7 +101,7 @@ When("Admin logged in", () => {
 });
 
 When('Admin change the status to "Interview passed" status', () => {
-  RecruitmentPage.open();
+  RecruitmentPage.openRecruitmentPage();
   RecruitmentPage.markInterviewPass();
 });
 
@@ -116,7 +115,7 @@ Then(
 // part 1: test case 2
 
 When('Admin change the status to "Interview failed" status', () => {
-  RecruitmentPage.open();
+  RecruitmentPage.openRecruitmentPage();
   RecruitmentPage.markInterviewPass();
 });
 
